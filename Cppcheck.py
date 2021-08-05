@@ -169,7 +169,7 @@ class Analyzer:
             "--template='{{severity}}|{{id}}|{{message}}|{{file}}|{{line}}:{{column}}|{{callstack}}|{{code}}' " \
             \
             "-j18 " \
-            "--file-filter={0}/src/services/sync/dotw_services_sync.cc" \
+            "--file-filter={0}/{2}" \
             .format( \
                 self.PROJECT_DIR, \
                 "suppressions_cppcheck.txt", \
