@@ -30,6 +30,7 @@ class Analyzer:
 
         """ Project root directory """
         self.PROJECT_DIR = os.getcwd()
+        self.BUILD_DIR   = self.PROJECT_DIR + "/src/services_build"
 
         """ Shell colors """
         self.COLOR_RED     = "\033[0;91m"
@@ -144,8 +145,8 @@ class Analyzer:
 
         cmd = \
             "cppcheck " \
-            "--project={0}/src/services_build/compile_commands.json " \
-            "--cppcheck-build-dir={0}/src/services_build " \
+            "--project={1}/compile_commands.json " \
+            "--cppcheck-build-dir={1} " \
             "--max-configs=1 " \
             \
             "--language=c " \
@@ -158,7 +159,7 @@ class Analyzer:
             "--enable=warning,missingInclude " \
             "--inconclusive " \
             \
-            "--suppressions-list={0}/{1} " \
+            "--suppressions-list={0}/{2} " \
             \
             "--relative-paths " \
             "--error-exitcode=1 " \
@@ -169,9 +170,10 @@ class Analyzer:
             "--template='{{severity}}|{{id}}|{{message}}|{{file}}|{{line}}:{{column}}|{{callstack}}|{{code}}' " \
             \
             "-j1 " \
-            "--file-filter={0}/{2}" \
+            "--file-filter={0}/{3}" \
             .format( \
                 self.PROJECT_DIR, \
+                self.BUILD_DIR, \
                 "suppressions_cppcheck.txt", \
                 self._git_modified_files) \
             .split()
