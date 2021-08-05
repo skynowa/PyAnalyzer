@@ -29,7 +29,7 @@ class Analyzer:
         """ Constants """
 
         """ Project root directory """
-        self.PROJECT_DIR = "/home/httpd/services-sync"
+        self.PROJECT_DIR = os.getcwd()
 
         """ Shell colors """
         self.COLOR_RED     = "\033[0;91m"
@@ -144,7 +144,7 @@ class Analyzer:
 
         cmd = \
             "cppcheck " \
-            "--project=./src/services_build/compile_commands.json " \
+            "--project={0}/src/services_build/compile_commands.json " \
             "--cppcheck-build-dir=./src/services_build " \
             "--max-configs=1 " \
             \
@@ -158,7 +158,7 @@ class Analyzer:
             "--enable=warning,missingInclude " \
             "--inconclusive " \
             \
-            "--suppressions-list={} " \
+            "--suppressions-list={0}/{1} " \
             \
             "--relative-paths " \
             "--error-exitcode=1 " \
@@ -169,9 +169,10 @@ class Analyzer:
             "--template='{{severity}}|{{id}}|{{message}}|{{file}}|{{line}}:{{column}}|{{callstack}}|{{code}}' " \
             \
             "-j18 " \
-            "--file-filter=/home/httpd/Gitlab/services-sync/src/services/sync/dotw_services_sync.cc" \
+            "--file-filter={0}/src/services/sync/dotw_services_sync.cc" \
             .format( \
-                "./suppressions_cppcheck.txt", \
+                self.PROJECT_DIR, \
+                "suppressions_cppcheck.txt", \
                 self._git_modified_files) \
             .split()
 
