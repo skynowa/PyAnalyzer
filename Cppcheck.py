@@ -216,7 +216,7 @@ class Analyzer:
         for it_item in items:
             base,ext = os.path.splitext(it_item)
             if (ext in options.CPP_MASK):
-                result += os.getcwd() + "/" + it_item.strip() + " "
+                result += it_item.strip() + " "
 
         result = result.strip()
 
