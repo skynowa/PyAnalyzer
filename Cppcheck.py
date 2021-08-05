@@ -145,7 +145,7 @@ class Analyzer:
         cmd = \
             "cppcheck " \
             "--project={0}/src/services_build/compile_commands.json " \
-            "--cppcheck-build-dir=./src/services_build " \
+            "--cppcheck-build-dir={0}/src/services_build " \
             "--max-configs=1 " \
             \
             "--language=c " \
