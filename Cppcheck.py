@@ -151,7 +151,6 @@ class Analyzer:
 
         cmd = \
             "cppcheck " \
-            "{} " \
             "--project=../src/services_build/compile_commands.json " \
             "--cppcheck-build-dir=. " \
             "--max-configs=1 " \
@@ -176,9 +175,10 @@ class Analyzer:
             "--template='{{severity}}|{{id}}|{{message}}|{{file}}|{{line}}:{{column}}|{{callstack}}|{{code}}' " \
             \
             "-j4 " \
+            "--file-filter={}" \
             .format( \
-                self._git_modified_files, \
-                "../suppressions_cppcheck.txt") \
+                "../suppressions_cppcheck.txt", \
+                self._git_modified_files) \
             .split()
 
         print("cmd: ", cmd)
