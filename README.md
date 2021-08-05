@@ -1,4 +1,4 @@
-# xAnalyzer
+# PyAnalyzer
 
 Python Static Analyzer Wrapper
 
