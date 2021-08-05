@@ -1,6 +1,7 @@
 # TODOs
 
-- [ ] option file
+- [ ] option/cfg file
+- [ ] option/cfg file - validation
 - [ ] suppression file
 - [ ] report model
 -     [ ] format (json)
