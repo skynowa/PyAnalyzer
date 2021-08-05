@@ -25,6 +25,7 @@
 - [ ] Modes:
 -     [ ] diff
 -     [ ] file
+-     [ ] file manual run
 -     [ ] full
 -     [ ] quiet/verbose
 
