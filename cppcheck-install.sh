@@ -15,7 +15,7 @@ VERSION=2.5
 git clone https://github.com/danmar/cppcheck.git
 
 cd cppcheck
-git checkout tags/${VERSION}
+# git checkout tags/${VERSION}
 
 mkdir build
 cd build
