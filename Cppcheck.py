@@ -172,6 +172,7 @@ class Analyzer:
             "--error-exitcode=1 " \
             \
             "--report-progress " \
+            "--verbose " \
             \
             "--template='{{severity}}|{{id}}|{{message}}|{{file}}|{{line}}:{{column}}|{{callstack}}|{{code}}' " \
             \
