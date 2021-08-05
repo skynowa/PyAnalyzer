@@ -168,7 +168,7 @@ class Analyzer:
             \
             "--template='{{severity}}|{{id}}|{{message}}|{{file}}|{{line}}:{{column}}|{{callstack}}|{{code}}' " \
             \
-            "-j18 " \
+            "-j1 " \
             "--file-filter={0}/{2}" \
             .format( \
                 self.PROJECT_DIR, \
