@@ -213,7 +213,7 @@ class Analyzer:
         result = ""
 
         # Git commit ID
-        cmd = ["git", "log", "--format='%H'", "-n 1"]
+        cmd = "git log --format='%H' -n 1".split()
         print("cmd: ", cmd)
 
         out = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -223,7 +223,9 @@ class Analyzer:
         print("git_commit_id: ", git_commit_id)
 
         # Git modified files from commit ID
-        cmd = ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", git_commit_id]
+        cmd = "git diff-tree --no-commit-id --name-only -r {}" \
+                    .format(git_commit_id) \
+                    .split()
         print("cmd: ", cmd)
 
         out = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
