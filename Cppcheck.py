@@ -186,28 +186,6 @@ class Analyzer:
 
         return subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
 
-    def getGitModifiedFiles(self):
-        """ Get current GIT modified files """
-
-        result = ""
-
-        cmd_commit_diff = "git diff --name-only --cached --diff-filter=ACM".split()
-        cmd_master_diff = "git diff --name-only master".split()
-
-        cmd = cmd_commit_diff
-
-        out = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-        stdout,stderr = out.communicate()
-
-        items = stdout.strip().decode("utf8").split("\n")
-
-        for it_item in items:
-            base,ext = os.path.splitext(it_item)
-            if (ext in options.CPP_MASK):
-                result += it_item.strip() + " "
-
-        return result
-
     def getGitModifiedFilesFromCommit(self):
         """ Get current GIT modified files from commit """
 
