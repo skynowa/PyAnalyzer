@@ -23,8 +23,6 @@ class Analyzer:
 
     """ public """
     def __init__(self, a_type):
-        """ Constructor """
-
         """ Constants """
 
         """ Project root directory """
@@ -37,19 +35,10 @@ class Analyzer:
         self.COLOR_MAGENTA = "\033[0;95m"
         self.COLOR_NORMAL  = "\033[0m"
 
-        """ Compiler types """
-        self.COMPILER_ID_UNKNOWN = 0
-        self.COMPILER_ID_CLANG   = 1
-        self.COMPILER_ID_GCC     = 2
-
         """
         Number of jobs (Cppcheck support only)
         """
         self.JOBS_NUM = str(multiprocessing.cpu_count())
-
-
-        """ current OS """
-        self._os_name = os.uname()[0]
 
         """ analyzer type """
         self._type = a_type
@@ -258,9 +247,6 @@ class Analyzer:
 def main():
     if (options.SKIP_CHECK == "1"):
         sys.exit(0)
-
-    arguments_parser = argparse.ArgumentParser(description='Arguments:')
-    arguments_parser.add_argument('--file-to-check', type=str, help='Optional. Full path to file to be checked.')
 
     try:
         analyzer = Analyzer(options.TYPE_ACTIVE)
