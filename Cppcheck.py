@@ -28,7 +28,7 @@ class Analyzer:
         """ Constants """
 
         """ Project root directory """
-        self.PROJECT_DIR = "/home/httpd/triptake-all"
+        self.PROJECT_DIR = "/home/httpd/services-sync"
 
         """ Shell colors """
         self.COLOR_RED     = "\033[0;91m"
@@ -176,8 +176,8 @@ class Analyzer:
             \
             "--template='{{severity}}|{{id}}|{{message}}|{{file}}|{{line}}:{{column}}|{{callstack}}|{{code}}' " \
             \
-            "-j1 " \
-            "--file-filter={}" \
+            "-j18 " \
+            "--file-filter=/home/httpd/Gitlab/services-sync/src/services/sync/dotw_services_sync.cc" \
             .format( \
                 "./suppressions_cppcheck.txt", \
                 self._git_modified_files) \
