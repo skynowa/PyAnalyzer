@@ -175,7 +175,7 @@ class Analyzer:
             \
             "--template='{{severity}}|{{id}}|{{message}}|{{file}}|{{line}}:{{column}}|{{callstack}}|{{code}}' " \
             \
-            "-j4 " \
+            "-j1 " \
             "--file-filter={}" \
             .format( \
                 "./suppressions_cppcheck.txt", \
