@@ -5,7 +5,7 @@
 # \brief Run Static Analyzers
 #
 # https://github.com/skynowa/PyAnalyzer
-# https://github.com/danmar/cppcheckы
+# https://github.com/danmar/cppcheck
 #--------------------------------------------------------------------------------------------------
 
 
