@@ -127,6 +127,7 @@ class Analyzer:
         print("STOP_ON_FAIL:", options.STOP_ON_FAIL)
         print("CPP_STD:     ", options.CPP_STD)
         print("CPP_MASK:    ", ", ".join(options.CPP_MASK))
+        print("cwd:         ", os.getcwd())
         print("")
 
     """ private """
@@ -151,8 +152,8 @@ class Analyzer:
 
         cmd = \
             "cppcheck " \
-            "--project=../src/services_build/compile_commands.json " \
-            "--cppcheck-build-dir=../src/services_build " \
+            "--project=./src/services_build/compile_commands.json " \
+            "--cppcheck-build-dir=./src/services_build " \
             "--max-configs=1 " \
             \
             "--language=c " \
@@ -177,7 +178,7 @@ class Analyzer:
             "-j4 " \
             "--file-filter={}" \
             .format( \
-                "../suppressions_cppcheck.txt", \
+                "./suppressions_cppcheck.txt", \
                 self._git_modified_files) \
             .split()
 
@@ -236,7 +237,7 @@ class Analyzer:
         for it_item in items:
             base,ext = os.path.splitext(it_item)
             if (ext in options.CPP_MASK):
-                result += it_item.strip() + " "
+                result += os.getcwd() + "/" + it_item.strip() + " "
 
         result = result.strip()
 
