@@ -152,7 +152,7 @@ class Analyzer:
         cmd = \
             "cppcheck " \
             "--project=../src/services_build/compile_commands.json " \
-            "--cppcheck-build-dir=. " \
+            "--cppcheck-build-dir=../src/services_build " \
             "--max-configs=1 " \
             \
             "--language=c " \
@@ -214,7 +214,7 @@ class Analyzer:
 
         # Git commit ID
         cmd = "git log --format='%H' -n 1".split()
-        print("cmd: ", cmd)
+        # print("cmd: ", cmd)
 
         out = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         stdout,stderr = out.communicate()
@@ -226,18 +226,21 @@ class Analyzer:
         cmd = "git diff-tree --no-commit-id --name-only -r {}" \
                     .format(git_commit_id) \
                     .split()
-        print("cmd: ", cmd)
+        # print("cmd: ", cmd)
 
         out = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         stdout,stderr = out.communicate()
 
         items = stdout.strip().decode("utf8").split("\n")
-        print("items: ", items)
 
         for it_item in items:
             base,ext = os.path.splitext(it_item)
             if (ext in options.CPP_MASK):
                 result += it_item.strip() + " "
+
+        result = result.strip()
+
+        print("Files: ", result)
 
         return result
 

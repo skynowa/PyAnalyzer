@@ -38,7 +38,7 @@ STOP_ON_FAIL = 0
 
 """ C++ language / standart """
 CPP_LANG = "c++"
-CPP_STD  = "c++11"
+CPP_STD  = "c++17"
 
 """
 Exclude files for checking
