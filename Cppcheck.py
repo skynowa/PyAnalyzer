@@ -29,8 +29,8 @@ class Analyzer:
         """ Constants """
 
         """ Project root directory """
-        self.PROJECT_DIR = os.getcwd()
-        self.BUILD_DIR   = self.PROJECT_DIR + "/src/services_build"
+        self.SRC_DIR   = os.getcwd()
+        self.BUILD_DIR = self.SRC_DIR + "/services_build"
 
         """ Shell colors """
         self.COLOR_RED     = "\033[0;91m"
@@ -64,7 +64,7 @@ class Analyzer:
         self._git_modified_files = self.getGitModifiedFilesFromCommit()
         if (len(self._git_modified_files) == 0):
             self.traceOk("No changes. OK")
-            sys.exit(0)
+            # sys.exit(0)
 
     def run(self):
         """ Run analysis by type """
@@ -84,7 +84,11 @@ class Analyzer:
         else:
             sys.exit(1)
 
+        print("*******************")
         stdout,stderr = out.communicate()
+        print("*******************")
+        print(stdout)
+        print(stderr)
         stdout_str = stdout.decode("utf8").strip(" \t\r\n")
         stderr_str = stderr.decode("utf8").strip(" \t\r\n")
 
@@ -145,13 +149,13 @@ class Analyzer:
 
         cmd = \
             "cppcheck " \
+            "services/sync/dotw_services_sync.cc " \
             "--project={1}/compile_commands.json " \
             "--cppcheck-build-dir={1} " \
-            "--max-configs=1 " \
             \
             "--language=c " \
             "--language=c++ " \
-            "--std=c++17 " \
+            "--std=c++11 " \
             "--library=std.cfg " \
             "--library=posix.cfg " \
             "--platform=unix64 " \
@@ -161,7 +165,6 @@ class Analyzer:
             \
             "--suppressions-list={0}/{2} " \
             \
-            "--relative-paths " \
             "--error-exitcode=1 " \
             \
             "--report-progress " \
@@ -170,11 +173,10 @@ class Analyzer:
             "--template='{{severity}}|{{id}}|{{message}}|{{file}}|{{line}}:{{column}}|{{callstack}}|{{code}}' " \
             \
             "-j1 " \
-            "--file-filter={0}/{3}" \
             .format( \
-                self.PROJECT_DIR, \
+                self.SRC_DIR, \
                 self.BUILD_DIR, \
-                "suppressions_cppcheck.txt", \
+                "cppcheck_suppressions.txt", \
                 self._git_modified_files) \
             .split()
 
