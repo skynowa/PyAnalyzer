@@ -155,7 +155,7 @@ class Analyzer:
             \
             "--language=c " \
             "--language=c++ " \
-            "--std=c++11 " \
+            "--std=c++17 " \
             "--library=std.cfg " \
             "--library=posix.cfg " \
             "--platform=unix64 " \
@@ -165,6 +165,7 @@ class Analyzer:
             \
             "--suppressions-list={0}/{2} " \
             \
+            "--relative-paths " \
             "--error-exitcode=1 " \
             \
             "--report-progress " \

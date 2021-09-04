@@ -22,3 +22,5 @@ Python Static Analyzer Wrapper
 ## Scripts
 
 - https://github.com/btorpey/static
+- https://gitlab.cern.ch/kdort/allpix-squared/-/blob/ab2bb6c280fdb056891a043a81dd96b4ac756df6/cmake/clang-cpp-checks.cmake
+- https://git.rz.tu-bs.de/irmb/virtualfluids/-/blob/78f2c812359e83bd7258e3fc0bea9064feb96910/sonar-project.properties

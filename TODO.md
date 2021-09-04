@@ -3,8 +3,12 @@
 - [ ] option/cfg file
 - [ ] option/cfg file - validation
 - [ ] suppression file
+
+      [ ] ignore dirs/files
+
 - [ ] report model
--     [ ] format (json)
+
+      [ ] format (json)
 
 - [ ] warning level
 - [ ] color output
@@ -22,13 +26,14 @@
 - [ ] SA version
 - [ ] platform=unix64
 - [ ] https://stackoverflow.com/questions/2124190/how-do-i-implement-interfaces-in-python
--
-- [ ] Modes:
--     [ ] diff
--     [ ] file
--     [ ] file manual run
--     [ ] full
--     [ ] quiet/verbose
+
+- [ ] Modes
+
+      [ ] diff
+      [ ] file
+      [ ] file manual run
+      [ ] full
+      [ ] quiet/verbose
 
 ## C++
 
