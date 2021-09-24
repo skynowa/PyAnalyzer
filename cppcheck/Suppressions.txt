@@ -1,0 +1,56 @@
+//-------------------------------------------------------------------------------------------------
+// Suppressions
+//
+// get list of checks
+//     cppcheck --doc
+//
+// get list of error messages
+//     cppcheck --errorlist
+//
+// The format for such a suppression is one of:
+// [error id]:[filename]:[line]
+// [error id]:[filename2]
+// [error id]
+//
+// The error id is the id that you want to suppress. The easiest way to get it is to use
+// the --xml command line flag. Copy and paste the id string from the XML output.
+// This may be * to suppress all warnings (for a specified file or files).
+// The filename may include the wildcard characters * or ?, which match any sequence
+// of characters or any single character respectively. It is recommended that you use "/"
+// as path separator on all operating systems.
+//-------------------------------------------------------------------------------------------------
+
+
+// Exclude files
+*:/usr/include/GraphicsMagick/*
+
+// variable
+// variableScope
+// unusedVariable
+// unreadVariable
+
+// function
+// passedByValue
+// unusedFunction
+// funcArgNamesDifferent
+// functionConst
+// missingOverride
+// functionStatic
+
+// class
+// noExplicitConstructor
+// useInitializationList
+
+// STL
+// useStlAlgorithm
+// stlIfStrFind
+
+// Preprocessor
+unknownMacro
+
+// Etc
+// postfixOperator
+// usleepCalled
+// useInitializationList
+// missingInclude
+// missingIncludeSystem

@@ -1,3 +1,14 @@
-cppcheck/
+# Cppcheck
+*.a1
+files.txt
 
+# Clang-Tidy
+
+
+# Python
 *.pyc
+
+# IDE
+.idea/
+
+# Etc

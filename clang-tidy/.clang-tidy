@@ -1,0 +1,198 @@
+#--------------------------------------------------------------------------------------------------
+# \file  .clang-tidy
+# \brief Clang-Tidy config (YAML)
+#
+# Checks: https://clang.llvm.org/extra/clang-tidy/checks/list.html
+#--------------------------------------------------------------------------------------------------
+
+---
+
+Checks: '
+-*,
+
+cppcoreguidelines-*,
+-cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+
+misc-*,
+readability-*,
+modernize-*
+'
+
+CheckOptions:
+  - { key: readability-identifier-naming.NamespaceCase,       value: lower_case }
+
+  - { key: readability-identifier-naming.ClassCase,           value: CamelCase }
+  - { key: readability-identifier-naming.StructCase,          value: CamelCase }
+  - { key: readability-identifier-naming.EnumCase,            value: CamelCase }
+
+  - { key: readability-identifier-naming.FunctionCase,        value: camelBack }
+  - { key: readability-identifier-naming.ClassMethodCase,     value: camelBack }
+
+  - { key: readability-identifier-naming.PrivateMemberCase,   value: lower_case }
+  - { key: readability-identifier-naming.PrivateMemberPrefix, value: _ }
+
+  - { key: bugprone-argument-comment.IgnoreSingleArgument,       value: false }
+  - { key: bugprone-argument-comment.CommentBoolLiterals,        value: true }
+  - { key: bugprone-argument-comment.CommentIntegerLiterals,     value: true }
+  - { key: bugprone-argument-comment.CommentFloatLiterals,       value: true }
+  - { key: bugprone-argument-comment.CommentStringLiterals,      value: true }
+  - { key: bugprone-argument-comment.CommentCharacterLiterals,   value: true }
+  - { key: bugprone-argument-comment.CommentUserDefinedLiterals, value: true }
+  - { key: bugprone-argument-comment.CommentNullPtrs,            value: true }
+
+  - { key: bugprone-sizeof-expression.WarnOnSizeOfIntegerExpression, value: 1 }
+
+  - { key: cppcoreguidelines-narrowing-conversions.PedanticMode,     value: 1 }
+
+  - { key: hicpp-multiway-paths-covered.WarnOnMissingElse,           value: 1 }
+
+  - { key: misc-throw-by-value-catch-by-reference.WarnOnLargeObject, value: 1 }
+
+  - { key: misc-unused-parameters.StrictMode,                        value: 1 }
+
+  - { key: performance-inefficient-string-concatenation.StrictMode,  value: 1 }
+
+  - { key: readability-function-size.LineThreshold,      value: 100 }
+  - { key: readability-function-size.StatementThreshold, value: 70 }
+  - { key: readability-function-size.ParameterThreshold, value: 6 }
+  - { key: readability-function-size.VariableThreshold,  value: 6 }
+
+  - { key: readability-simplify-boolean-expr.ChainedConditionalReturn,     value: 1 }
+
+  - { key: readability-simplify-boolean-expr.ChainedConditionalAssignment, value: 1 }
+
+  - { key: performance-inefficient-vector-operation.VectorLikeClasses, value: "::std::vector;::std::list;::std::set" }
+...
+
+# May be add to options
+#
+# { key: bugprone-dangling-handle.HandleClasses, value: ? } A semicolon-separated list of class names that should be treated as handles. By default only std::experimental::basic_string_view is considered.
+# { key: bugprone-assert-side-effect.AssertMacros, value: ? } A comma-separated list of the names of assert macros to be checked.
+# { key: bugprone-exception-escape.FunctionsThatShouldNotThrow, value: ? } list containing function names which should not throw
+# { key: bugprone-unused-return-value.CheckedFunctions, value: ? } list of functions to check
+
+# { key: cppcoreguidelines-macro-usage.AllowedRegexp, value: ? } A regular expression to filter allowed macros.
+
+# { key: modernize-use-nullptr.NullMacros, value: ? } Comma-separated list of macro names that will be transformed along with NULL.
+
+# { key: performance-faster-string-find.StringLikeClasses, value: ? } Semicolon-separated list of names of string-like classes. By default only std::basic_string is considered. The list of methods to consired is fixed.
+
+# { key: performance-faster-string-find.StringLikeClasses, value: ? } Semicolon-separated list of names of string-like classes. By default only std::basic_string is considered. The list of methods to consired is fixed.
+
+
+
+## Those below are same as above, but with additional comments.
+
+## High priority
+## Bugprone checks
+# bugprone-* \
+## Heavy static analyzer operation
+# -bugprone-exception-escape \
+## C++ Core guidelines checkS
+# cppcoreguidelines-* \
+#  Un-categorized checks
+# misc-* \
+## Bugprone potential ODR violation check / Potentially hard to fix
+# -misc-definitions-in-headers \
+# -misc-non-private-member-variables-in-classes \
+## Fresh language constructs checks
+# modernize-* \
+## Arguable style check
+# -modernize-use-trailing-return-type \
+## Only in C++17
+# -modernize-concat-nested-namespaces \
+# -modernize-unary-static-assert \
+# -modernize-use-nodiscard \
+# -modernize-use-uncaught-exceptions \
+## Only in C++14
+# -modernize-make-unique \
+# -modernize-use-transparent-functors \
+#  Performance-related checks
+# performance-* \
+## Readability checks
+# readability-* \
+## Large functions checks, by different params
+# readability-function-size \
+## Identifier naming different configurable checks
+# readability-identifier-naming \
+## Portability checks
+# portability-* \
+## Clang Static Analyzer checks
+# clang-analyzer-* \
+## Message Passing Interface (MPI) standard checks
+# -clang-analyzer-optin.mpi.* \
+## Objective-C / Apple API checks
+# -clang-analyzer-nullability.* \
+# -clang-analyzer-osx.* \
+# -clang-analyzer-optin.osx.* \
+# -clang-analyzer-optin.performance.GCDAntipattern \
+## C va_list checks
+# -clang-analyzer-valist.* \
+
+## Medium priority
+## Google coding conventions
+# -google-* \
+# google-explicit-constructor \
+# google-runtime-references \
+# google-runtime-operator \
+# google-readability-casting \
+## High Integrity C++ Coding Standard checks
+# -hicpp-* \
+# hicpp-exception-baseclass \
+# hicpp-signed-bitwise \
+## CERT C Coding Standards
+# -cert-* \
+## for loops iterator has a floating-point type
+# cert-flp30-c \
+## flag string-to-number conversions without proper conversion validation (like atoi(), scanf())
+# cert-err34-c \
+## Clang Static Analyzer checks
+## Implementation-defined behaviour in used UNIX/Posix functions
+# clang-analyzer-optin.portability.UnixAPI \
+
+## Low priority
+## CERT C Coding Standards
+## proper, safe exception throwing
+# cert-err58-cpp
+# cert-err60-cpp
+## forbid system(), popen() calls
+# cert-env33-c
+## std, posix namespace modification
+# cert-dcl58-cpp
+## forbid C style variadic functions
+# cert-dcl50-cpp
+## forbid setjmp() and longjmp()
+# cert-err52-cpp
+## force const returns from posfix operators
+# cert-dcl21-cpp
+## rand()/srand() usage
+# cert-msc50-cpp
+# cert-msc51-cpp
+## Google coding conventions
+# -google-* \
+## replace integer types to size defined integer types (for example, int to int32)
+# google-runtime-int \
+
+## Unused libraries, platforms, frameworks and environments checks:
+## Abseil library checks
+# -abseil-* \
+## Boost library checks
+# -boost-* \
+## Android OS checks / Bunch of low level C function calls improvements
+# -android-*
+## Apple Darwin OS specific checks
+# -darwin-* \
+## Zircon microkernel (core of Google Fuchsia OS) checks
+# -zircon-* \
+## Objective-C coding conventions checks
+# -objc-* \
+## OpenMP API checks
+# -openmp-* \
+## Message Passing Interface (MPI) standard checks
+# -mpi-* \
+## Linux Kernel checks
+# -linuxkernel-* \
+## Google Fuchsia OS checks / Disallow default arguments, operator overloading, multiple or virtual inheritance, global static storages.
+# -fuchsia-* \
+## LLVM checks
+# -llvm-* \

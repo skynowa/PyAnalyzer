@@ -1,0 +1,20 @@
+/**
+ * \file  ErrorLevels.txt
+ * \brief Error levels
+ *
+ * Enable additional checks:
+ * - all
+ * - warning
+ * - style
+ * - performance
+ * - portability
+ * - information
+ * - unusedFunction
+ * - missingInclude
+ *
+ * Several ids can be given if you separate them with commas.
+ * Comments - single line allow
+ */
+
+
+warning,portability

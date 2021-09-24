@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# \file  cppcheck-install.sh
+# \file  install.sh
 # \brief Cppcheck - build/install
 #
 # https://github.com/danmar/cppcheck
@@ -12,7 +12,7 @@ set -x
 #--------------------------------------------------------------------------------------------------
 VERSION=2.5
 
-git clone https://github.com/danmar/cppcheck.git
+git clone --depth=1 https://github.com/danmar/cppcheck.git
 
 cd cppcheck
 # git checkout tags/${VERSION}
@@ -26,6 +26,7 @@ cmake \
 
 sudo cmake \
 	--build . \
+	--parallel 4 \
 	--target install \
 	--clean-first
 #--------------------------------------------------------------------------------------------------
