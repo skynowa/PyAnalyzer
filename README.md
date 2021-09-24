@@ -10,6 +10,7 @@ Python Static Analyzer Wrapper
 - https://github.com/lefticus/cpp_starter_project/blob/master/cmake/StaticAnalyzers.cmake
 - https://github.com/lefticus/cpp_starter_project/blob/master/cmake/Sanitizers.cmake
 - C++ Russia 2017: Юрий Ефимочев, clang-tidy: путешествие внутрь C++ Abstract Syntax Tree <https://www.youtube.com/watch?v=WHgXn_ufY90>
+- https://fekir.info/post/clang-tidy-windows/
 
 ## Custom rules
 
