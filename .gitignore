@@ -1,3 +1,6 @@
+# Installs
+cppcheck/
+
 # Cppcheck
 *.a1
 files.txt
